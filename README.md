@@ -6,12 +6,11 @@ Reference Book : Neural Netowrk Control of Robot Manipulators and Nonlinear Syst
 Chapter 1 : Background on Neural Network
 
 Example 1.1.1 : Output Surface for one-layer Neural Network
+This example generates a 3D mesh of a single-layer perceptron’s output for inputs x₁,x₂ ∈ [−2,2] sampled at 0.1 intervals, using MATLAB’s simuff routine with sigmoid activation. The resulting surface plot clearly shows how the network mapping varies across the input grid.
 
-This example generates a 3D mesh of a single-layer perceptron’s output for inputs \(x_{1}\), \(x_{2}\) ∈ [–2, 2] sampled at 0.1 intervals, using NumPy, Matplotlib and a sigmoid activation function. The resulting surface plot illustrates how the network mapping varies across the input grid.
+**Formula:**  
+`y = σ(v x + b) = σ(-4.79 x₁ + 5.90 x₂ - 0.93)`  (1.1)
 
-Formula:
-    :math:`y = \sigma(-4.79\,x_{1} + 5.90\,x_{2} - 0.93)`, where
-    :math:`\sigma(z)=1/(1+e^{-z})`.
 
 Chapter 2 : Background on Dynamic Systems
 
