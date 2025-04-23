@@ -32,7 +32,7 @@ x₁, the reference y<sub>d</sub> and the error.
 
 Control Laws:
 
-u = (−f(x) + ÿ<sub>d</sub> + K<sub>d</sub>·ė + K<sub>p</sub>·e) / g(x)
+u = (−f(x) + ÿ<sub>d</sub> + K<sub>d</sub>·ė + K<sub>p</sub>·e) / g(x) (2.1)
 
 Result: Referance Trajectory Graphic
 
@@ -47,13 +47,13 @@ This code suite, implemented in MATLAB, defines and simulates the dynamic model 
 
 Control Laws:
 
-τ = M(q)·(q̈<sub>d</sub> + K<sub>d</sub>·ė + K<sub>p</sub>·e) + N(q, q̇)
+τ = M(q)·(q̈<sub>d</sub> + K<sub>d</sub>·ė + K<sub>p</sub>·e) + N(q, q̇) (3.1)
 
-Result : Referance Trajectory Graphic
+Result : Referance Trajectory Graphic (Sample)
 
 ![git3_CTPD](https://github.com/user-attachments/assets/d2941676-cf9a-4c4f-9311-3cb433163b0e)
 
-Result : Control Torque
+Result : Control Torque (Sample)
 
 ![git3_CTPD_torque](https://github.com/user-attachments/assets/63771717-444e-4938-b0b7-eb89de222871)
 
@@ -65,29 +65,45 @@ Control Laws:
 
 ε̇ = e
 
-τ = M(q)·(q̈<sub>d</sub> + K<sub>d</sub>·ė + K<sub>p</sub>·e + K<sub>i</sub>·ε̇) + N(q, q̇)
+τ = M(q)·(q̈<sub>d</sub> + K<sub>d</sub>·ė + K<sub>p</sub>·e + K<sub>i</sub>·ε̇) + N(q, q̇) (3.2)
 
-Result : Referance Trajectory Graphic
+Result : Referance Trajectory Graphic (Sample)
 
 ![git3_CTPID](https://github.com/user-attachments/assets/abfab594-ce8f-4709-ab2c-cd2baaefde3e)
 
-Result : Control Torque
+Result : Control Torque (Sample)
 
 ![git3_CTPID_torque](https://github.com/user-attachments/assets/89f9e865-558b-42e3-b4aa-219e1b61b991)
 
-Example 3.3.2 : Performance of Classical Joint Controller
+Example 3.3.2 : Performance of Classical Joint Controller (Sample)
 
 This code suite, implemented in MATLAB, defines and simulates the dynamic model of a two-link robotic manipulator and its classical joint controller design.
 
 Control Laws:
 
-τ = K<sub>d</sub>·ė + K<sub>p</sub>·e + K<sub>i</sub>·ε̇
+τ = K<sub>d</sub>·ė + K<sub>p</sub>·e + K<sub>i</sub>·ε̇  (3.3)
+
+Result: 
+
+Example 3.3.2 : Performance of PD-Gravity Controller (Sample)
+
+Control Laws:
+
+Result :
+
+Example 3.4.1 : Performance of Adapitve Controller (Sample)
+
+Control Laws:
+
+Result :
+
+Example 3.4.2 : Performance of Robust Controller (Sample)
+
+Control Laws:
+
+Result :
 
 Summary of Controller:
-
-
-
-
 
 ![image](https://github.com/user-attachments/assets/8a85075c-833f-46fb-81af-c7be483d6198)
 
