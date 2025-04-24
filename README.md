@@ -298,3 +298,35 @@ Nonideal Case
 ![git_mlp_nonideal](https://github.com/user-attachments/assets/b7660933-746d-4fe1-bd0a-f8ff0ea03895)
 
 Example 4.4 : Table 4.3.3 - Two-Layer NN Controller with Augmented Hebbian Tuning
+
+</div>
+Two-layer NN controllers with augmented Hebbian tuning are used on two-link manipulators because they combine local correlation learning with error-weighted suppression to ensure parameter adaptation even under weak excitation. This yields improved robustness to model uncertainty and persistent tracking accuracy without requiring full Lyapunov-based excitation conditions. However, the extra Hebbian term and κ tuning add design complexity, can introduce bias under sustained error, and increase computational overhead.
+
+  <p>
+    <strong>Control input:</strong><br>
+    $$\tau = \hat{W}^{T}\,\sigma\bigl(\hat{V}^{T}x\bigr)\;+\;K_{v}\,r\;-\;v$$
+  </p>
+
+  <p>
+    <strong>Robustifying signal:</strong><br>
+    $$v(t) = -\,K_{z}\,\bigl(\|\hat{Z}\|_{F} + Z_{B}\bigr)\,r$$
+  </p>
+  
+   <p>
+    <strong>NN weight/threshold tuning (augmented Hebbian):</strong><br>
+    $$\dot{\hat{W}} = F\,\hat{\sigma}\,r^{T}\;-\;\kappa\,F\,\|r\|\,\hat{W},$$  
+    $$\dot{\hat{V}} = G\,\|r\|\,x\,\hat{\sigma}^{T}r^{T}\;-\;\kappa\,G\,\|r\|\,\hat{V}$$<br>
+    <em>Design parameters:</em> $F,\,G$ positive-definite matrices, $\kappa>0$.
+  </p>
+
+Result : Referance Trajectory Graphic (Sample)
+
+![git_mlp_hıb-dyn](https://github.com/user-attachments/assets/bd3f7e07-65a9-44ee-b8b6-bed1bc2edd2e)
+
+![git_mlp_hıb](https://github.com/user-attachments/assets/39351eff-b908-4a7c-86ba-d86ce1624759)
+
+
+
+
+
+
