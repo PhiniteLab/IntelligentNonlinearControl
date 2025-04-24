@@ -49,7 +49,7 @@ Chapter 3 : Robot Dynamics and Control
 
 Example 3.3.1 : Performance of PD-CT Controller for Two-Link Manipulator
 
-This code suite, implemented in MATLAB, defines and simulates the dynamic model of a two-link robotic manipulator and its PD computed-torque controller design.
+In this approach, the manipulator’s nonlinear dynamics are exactly canceled by inverting the model and applying PD feedback around the desired trajectory, thereby reducing the closed‐loop behavior to a set of decoupled, linear second‐order systems. Its principal benefit lies in the high tracking precision and rapid transient response afforded by model‐based linearization. However, owing to the absence of an integral action, steady‐state errors cannot be eliminated, and robustness against parametric uncertainties is limited.
 
   <p>
     <strong>Control Torque:</strong><br>
@@ -63,7 +63,7 @@ Result : Referance Trajectory Graphic (Sample)
 
 Example 3.3.1 : Performance of PID-CT Controller for Two-Link Manipulator
 
-This code suite, implemented in MATLAB, defines and simulates the dynamic model of a two-link robotic manipulator and its PID computed-torque controller design.
+By augmenting the PD CT law with an integral term, this controller compensates for constant disturbances and modeling inaccuracies, thus eliminating residual steady‐state errors and enhancing long‐term tracking performance. Nevertheless, the integral component may introduce overshoot, degrade transient dynamics, and risk integrator wind-up under saturating inputs.
 
   <p>
     <strong>Derivation of Error:</strong><br>
@@ -81,7 +81,7 @@ Result : Referance Trajectory Graphic (Sample)
 
 Example 3.3.2 : Performance of Classical Joint Controller (Sample)
 
-This code suite, implemented in MATLAB, defines and simulates the dynamic model of a two-link robotic manipulator and its classical joint controller design.
+A conventional PID controller is applied independently at each joint, without employing any model knowledge. This method is favored in industry due to its straightforward design, tuning ease, and minimal hardware requirements. Its drawback is that inter‐joint coupling is ignored, often necessitating high gains that can excite vibrations and provoke instability.
 
   <p>
     <strong>Derivative of Error:</strong><br>
@@ -98,6 +98,8 @@ Result:
 
 Example 3.3.2 : Performance of PD-Gravity Controller (Sample)
 
+This scheme combines a PD feedback term with a gravity‐cancellation element, while neglecting inertial and Coriolis effects. Its simplicity and direct compensation of gravitational loads render it effective for low-speed, precision tasks. However, omission of velocity‐dependent dynamics significantly degrades performance during fast motions or under heavy payload variations.
+
   <p>
     <strong>Control Torque:</strong><br>
     $$\tau = K_v\,\dot e \;+\; K_p\,e \;+\; G(q)$$
@@ -108,6 +110,8 @@ Result : Referance Trajectory Graphic (Sample)
 ![git_gravity](https://github.com/user-attachments/assets/0b916054-c0b4-464e-9dc9-3975a94180ed)
 
 Example 3.4.1 : Performance of Adapitve Controller (Sample)
+
+This strategy employs online parameter estimation and adjustment to accommodate modeling uncertainties and load changes, thereby providing strong robustness against parametric variations. The principal challenge lies in its computational complexity, the requirement for persistent excitation to guarantee parameter convergence, and potentially slow adaptation rates.
 
   <p>
     <strong>Error definitions:</strong><br>
@@ -143,15 +147,6 @@ Example 3.4.2 : Performance of Robust Controller (Sample)
   <p>
     <strong>Robust term:</strong><br>
     $$v = -\,\frac{r\,F}{\max(\|r\|,\epsilon)}$$
-  </p>
-
-  <p>
-    <strong>Gravity compensation:</strong><br>
-    $$G(q) = 
-    \begin{bmatrix}
-      (m_1 + m_2)\,g\,a_1\cos(q_1) + m_2\,g\,a_2\cos(q_1 + q_2)\\[4pt]
-      m_2\,g\,a_2\cos(q_1 + q_2)
-    \end{bmatrix}$$
   </p>
 
   <p>
