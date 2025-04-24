@@ -223,3 +223,78 @@ Summary of Controller for Robot Manipulator :
 
 Chapter 4 : Neural Network Robot Control
 
+Example 4.1 : Table 4.2.1 - FLNN control for Ideal Case or Nonideal Case
+
+In two-link manipulators, FLNN controllers are employed because they can approximate the arm’s strong nonlinear dynamics and adapt online to parameter uncertainties, yielding precise trajectory tracking without requiring an exact model inversion. Their main advantage is the universal‐approximation capability combined with a rigorous adaptation law, but they demand persistent excitation for weight convergence and incur additional computational overhead that may challenge strict real-time constraints.
+
+  <p>
+    <strong>Control Torque:</strong><br>
+    $$\tau = \hat{W}^{T}\,\phi(x) + K_{v}\,r$$
+  </p>
+  
+  <p>
+    <strong>NN weight/threshold tuning:</strong><br>
+    $$\dot{\hat{W}} = F\,\phi(x)\,r^{T}$$
+  </p>
+
+Result : Referance Trajectory Graphic (Sample)
+
+  <p>
+    <strong> FNN without NN </strong><br>
+  </p>
+
+![git_fnn_wo_nn](https://github.com/user-attachments/assets/049840be-9428-4715-a222-fb36da92f8f2)
+
+  <p>
+    <strong> FNN with NN </strong><br>
+  </p>
+  
+![git_fnn_w_nn](https://github.com/user-attachments/assets/1767d594-d45f-421e-9a8d-c2c8412209d0)
+
+
+Example 4.2 : Table 4.2.2 - FLNN Controller with Augmented Tuning to Avoid PE
+
+In two-link manipulators, FLNN controllers are employed because they can approximate the arm’s strong nonlinear dynamics and adapt online to parameter uncertainties.The augmented tuning term preserves the model fit by suppressing parameter deviations even when the permanent excitation (PE) condition is not met. While these approaches offer advantages in robustness to uncertainties and parameter convergence, the design complexity and adaptation speed may remain low due to the additional 𝜅 κ parameter and computational load.
+
+  <p>
+    <strong>Control input:</strong><br>
+    $$\tau = \hat{W}^{T}\,\phi(x) + K_{v}\,r$$
+  </p>
+
+  <p>
+    <strong>NN weight/threshold tuning (augmented):</strong><br>
+    $$\dot{\hat{W}} \;=\; F\,\phi(x)\,r^{T}\;-\;\kappa\,F\,\|r\|\;\hat{W}$$<br>
+    <em>Design parameters:</em> $F$ positive-definite matrix, $\kappa>0$.
+  </p>
+
+Result : Referance Trajectory Graphic (Sample)
+
+![gti_augm_4 2 2](https://github.com/user-attachments/assets/50637951-0898-43b7-9a58-f188032b0a38)
+
+Example 4.3 : Table 4.3.1 - Two-Layer NN Controller for Ideal Case and Nonideal Case
+
+Two-layer neural‐network controllers are used on two‐link manipulators because they can capture both the primary nonlinear dynamics and the residual modeling errors through a hidden layer structure, yielding superior trajectory tracking compared to single‐layer networks. Their online weight‐tuning laws ensure continual adaptation to parameter uncertainties, improving robustness under changing payloads and friction. However, the added network depth introduces more tuning parameters and computational overhead, which can complicate real‐time implementation and stability guarantees when excitation is limited.
+
+  <p>
+    <strong>Control input:</strong><br>
+    $$\tau = \hat{W}^{T}\,\sigma\bigl(\hat{V}^{T}x\bigr) + K_{v}\,r - \nu$$
+  </p>
+
+  <p>
+    <strong>NN weight/threshold tuning:</strong><br>
+    $$\dot{\hat{W}} = F\,\hat{r}^{T},\quad
+      \dot{\hat{V}} = G\,x\,\bigl(\sigma^{T}\hat{W}\,r\bigr)^{T}$$<br>
+    <em>Design parameters:</em> $F,\,G$ positive-definite matrices.
+  </p>
+
+Result : Referance Trajectory Graphic (Sample)
+
+Ideal Case
+
+![git_mlp_ideal](https://github.com/user-attachments/assets/7f6416de-71cc-4dcf-a7bd-6c7659ec93e5)
+
+Nonideal Case
+
+![git_mlp_nonideal](https://github.com/user-attachments/assets/b7660933-746d-4fe1-bd0a-f8ff0ea03895)
+
+Example 4.4 : Table 4.3.3 - Two-Layer NN Controller with Augmented Hebbian Tuning
